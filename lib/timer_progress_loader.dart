@@ -96,14 +96,20 @@ class _TimerProgressLoaderState extends State<TimerProgressLoader>
               return SweepGradient(
                 stops: [_animationValue, _animationValue],
                 center: Alignment.center,
-                colors: [Colors.blue, Colors.white.withAlpha(90)],
+                colors: [
+                  Colors.blue,
+                  Colors.white.withAlpha(10),
+                ],
               ).createShader(rect);
             },
             child: Container(
               width: _loaderSize,
               height: _loaderSize,
               decoration: BoxDecoration(
-                color: Colors.blue,
+                image: DecorationImage(
+                  image: AssetImage("assets/images/progress-bar.png"),
+                ),
+                //color: Colors.blue,
                 shape: BoxShape.circle,
               ),
               child: Container(),
@@ -116,7 +122,7 @@ class _TimerProgressLoaderState extends State<TimerProgressLoader>
               width: _loaderSize - 20,
               height: _loaderSize - 20,
               decoration: BoxDecoration(
-                color: Color(0xFF111111),
+                //color: Color(0xFF111111),
                 shape: BoxShape.circle,
               ),
             ),
