@@ -87,47 +87,28 @@ class _TimerProgressLoaderState extends State<TimerProgressLoader>
     return Container(
       width: _loaderSize,
       height: _loaderSize,
-
-      //Stack Contains the background gradient and foreground circle to cover the front
-      child: Stack(
-        children: [
-          ShaderMask(
-            shaderCallback: (rect) {
-              return SweepGradient(
-                stops: [_animationValue, _animationValue],
-                center: Alignment.center,
-                colors: [
-                  Colors.blue,
-                  Colors.white.withAlpha(10),
-                ],
-              ).createShader(rect);
-            },
-            child: Container(
-              width: _loaderSize,
-              height: _loaderSize,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/progress-bar.png"),
-                ),
-                //color: Colors.blue,
-                shape: BoxShape.circle,
-              ),
-              child: Container(),
+      child: ShaderMask(
+        shaderCallback: (rect) {
+          return SweepGradient(
+            stops: [_animationValue, _animationValue],
+            center: Alignment.center,
+            colors: [
+              Colors.blue,
+              Colors.white.withAlpha(10),
+            ],
+          ).createShader(rect);
+        },
+        child: Container(
+          width: _loaderSize,
+          height: _loaderSize,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/progress-bar.png"),
             ),
+            shape: BoxShape.circle,
           ),
-
-          //Cover to block the center part of gradient loading circle
-          Center(
-            child: Container(
-              width: _loaderSize - 20,
-              height: _loaderSize - 20,
-              decoration: BoxDecoration(
-                //color: Color(0xFF111111),
-                shape: BoxShape.circle,
-              ),
-            ),
-          ),
-        ],
+          child: Container(),
+        ),
       ),
     );
   }
